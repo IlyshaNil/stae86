@@ -5,8 +5,8 @@ default:
                   "localhost"]
   DATABASE_URL: ""
 
-development:
-
+server:
+  DEBUG: False
 
 
 
