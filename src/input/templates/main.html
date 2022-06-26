@@ -13,13 +13,16 @@
       <legend>Input form</legend>
       <div class="item">
         <div class="name-item">
-            <input id="name_0" type="text" />
-            <button type = "button" style = "margin-left: 10px;"  onclick="send_data(document.getElementById('name_0'))">Submi1t</button>
+            <input name="name_0" id="empty" type="text" />
+            <button type = "button" style = "margin-left: 10px;"  onclick="send_data(document.getElementsByName('name_0')[0], this)">Send</button>
         </div>
       </div>
     </form>
     </div>
     <button style="margin-left: 20px" onclick="add_field()">Add field</button>
+    <a href="/api/v1/list/">
+      <button style="margin-left: 20px" >Inputs list</button>
+    </a>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="{% static 'input/script.js' %}"></script>
   </body>

@@ -6,4 +6,3 @@ from .models import FormData
 class FormDataAdmin(admin.ModelAdmin):
     list_display = ("name", "data")
     search_fields = ("data",)
-    

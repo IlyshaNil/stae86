@@ -3,9 +3,9 @@ var input_count = 1;
 
 function add_field() {
     var input_html = '<div class="name-item">\
-    <input id="name_'+input_count+'" type="text" />\
+    <input name="name_'+input_count+'" id="empty" type="text" />\
     <button style = "margin-left: 10px;"\
-    onclick="send_data(document.getElementById(\'name_'+input_count+'\'))">Submit</button>\
+    onclick="send_data(document.getElementsByName(\'name_'+input_count+'\')[0], this)">Send</button>\
     </div>';
 
     var d1 = document.getElementsByClassName('item');
@@ -14,32 +14,18 @@ function add_field() {
 }
 
 
-function send_data(element) {
-    if (element.name === ""){
-        console.log('post')
+function send_data(element, bttn) {
         $.ajax({
-            url: '/api/v1/list-create/',
+            url: '/api/v1/create/',
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json',
-            data: JSON.stringify({'name' : element.id, 'data' : element.value}),
-            success: function(data){
-                alert(data);
-                
-            }
+            data: JSON.stringify({'name' : element.name, 'data' : element.value}),
+            statusCode:{
+                201:function(){
+                    element.disabled = true;
+                    bttn.disabled = true;
+                }
+            }  
         });
-        element.setAttribute('name', 'modified');
-    }
-    else{
-        console.log('patch')
-        $.ajax({
-            url: '/api/v1/list-create/',
-            method: 'PATCH',
-            dataType: 'application/json; charset=utf-8',
-            data: JSON.stringify(element.value),
-            success: function(data){
-                alert(data);
-            }
-        });
-    }
 }
