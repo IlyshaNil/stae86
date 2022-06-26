@@ -1,10 +1,9 @@
-from django.db import router
-from django.urls import path, include
-from .views import *
+from django.urls import path
+from .views import FormDataViewSet, main
 
 
 urlpatterns = [
     path("", main, name="main"),
-    path("api/v1/create/", FormDataAPICreate.as_view()),
-    path("api/v1/list/", FormDataAPIList.as_view(), name="list"),
+    path("api/v1/create/", FormDataViewSet.as_view({'post': 'create'})),
+    path("api/v1/list/", FormDataViewSet.as_view({'get': 'list'})),
 ]

@@ -1,4 +1,3 @@
-from dataclasses import fields
 from .models import FormData
 from rest_framework import serializers
 

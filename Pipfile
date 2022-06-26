@@ -9,6 +9,7 @@ dynaconf = {extras = ["yaml"], version = "*"}
 dj-database-url = "*"
 psycopg2-binary = "*"
 djangorestframework = "*"
+flake8 = "*"
 
 [dev-packages]
 black = "*"
